@@ -6,6 +6,12 @@ namespace Homework_Theme_04.Helpers
 {
     public static class TaskHelper1
     {
+        /// <summary>
+        /// Заполнение доходов и расходов за кол-во месяцев
+        /// </summary>
+        /// <param name="incomes">доходы</param>
+        /// <param name="outgo">расходы</param>
+        /// <param name="monthCount">количество месяцев</param>
         private static void InputIncomesOutgoArrays(int[] incomes, int[] outgo, int monthCount)
         {
             // Исходные данные
@@ -21,6 +27,14 @@ namespace Homework_Theme_04.Helpers
             }
         }
 
+        /// <summary>
+        /// Подсчет прибыли и количества месяцев с положительной прибылью
+        /// </summary>
+        /// <param name="incomes">доходы</param>
+        /// <param name="outgo">расходы</param>
+        /// <param name="profits">прибыль</param>
+        /// <param name="monthCount">кол-во месяцев</param>
+        /// <returns></returns>
         private static int GetPositiveProfitMonthCount(int[] incomes, int[] outgo, int[] profits, int monthCount)
         {
             // Вывод результата
@@ -42,6 +56,11 @@ namespace Homework_Theme_04.Helpers
             return positiveProfitMonthCount;
         }
 
+        /// <summary>
+        /// Получение списка месяцев с тремя худшими показателям прибыли (положительная прибыль)
+        /// </summary>
+        /// <param name="profits">массив с прибылью</param>
+        /// <returns></returns>
         private static int[] GetLowProfitMonths(int[] profits)
         {
             // Сортировка прибыли
@@ -63,17 +82,23 @@ namespace Homework_Theme_04.Helpers
             return monthNumbers.ToArray();
         }
 
+        /// <summary>
+        /// Первое задание
+        /// </summary>
         public static void MakeTask1()
         {
             const int monthCount = 12;
 
+            // Заполнение входных данных
             var incomes = new int[monthCount];
             var outgo = new int[monthCount];
             InputIncomesOutgoArrays(incomes, outgo, monthCount);
 
+            // Расчет прибыли и кол-ва месяцев с положительной прибылью
             var profits = new int[monthCount];
             int positiveProfitMonthCount = GetPositiveProfitMonthCount(incomes, outgo, profits, monthCount);
 
+            // Массив месяцев с тремя худшими  показателями прибыли.
             int[] months = GetLowProfitMonths(profits);
 
             Console.WriteLine($"Худшая прибыль в месяцах: {string.Join(",", months)}");
