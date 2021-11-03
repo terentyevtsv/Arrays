@@ -36,7 +36,7 @@ namespace Homework_Theme_04
             // 
             // Худшая прибыль в месяцах: 7, 4, 1, 5, 12
             // Месяцев с положительной прибылью: 10
-            TaskHelper1.MakeTask1();
+            //TaskHelper1.MakeTask1();
 
 
 
@@ -82,6 +82,7 @@ namespace Homework_Theme_04
             //      |  1  3  5  |   |  5  15  25  |
             //  5 х |  4  5  7  | = | 20  25  35  |
             //      |  5  3  1  |   | 25  15   5  |
+            MatrixHelper.MultiplyMatrixNumber();
             //
             //
             // ** Задание 3.2
