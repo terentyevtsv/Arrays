@@ -40,12 +40,12 @@ namespace Homework_Theme_04.Helpers
         /// <param name="rowsCount">количество строк</param>
         /// <param name="columnsCount">количество столбцов</param>
         /// <returns></returns>
-        private static int[,] GenerateMatrix(int rowsCount, int columnsCount)
+        private static int[,] GenerateMatrix(int rowsCount, 
+            int columnsCount, string message, Random random)
         {
             var matrix = new int[rowsCount, columnsCount];
-            var random = new Random();
 
-            Console.WriteLine("Исходная матрица:");
+            Console.WriteLine($"{message}:");
             var buf = new int[columnsCount];
 
             // Сохранение и печать первоначальной матрицы
@@ -63,7 +63,7 @@ namespace Homework_Theme_04.Helpers
             return matrix;
         }
 
-        public static void MultiplyMatrixNumber()
+        public static void MultiplyMatrixNumber(Random random)
         {
             // Размеры матрицы
             var matrixSizes = ReadMatrixSizes();
@@ -77,7 +77,8 @@ namespace Homework_Theme_04.Helpers
             int columnsCount = matrixSizes[1];
 
             // Генерация случайной матрицы
-            var matrix = GenerateMatrix(rowsCount, columnsCount);
+            var matrix = GenerateMatrix(rowsCount, 
+                columnsCount, "Исходная матрица", random);
 
             // Множитель
             int number = GetInputNumber("Число для умножения");
@@ -129,7 +130,7 @@ namespace Homework_Theme_04.Helpers
             Console.ReadKey();
         }
 
-        public static void ShowSimpleMatrixOperations()
+        public static void ShowSimpleMatrixOperations(Random random)
         {
             // Размеры матриц
             var matrixSizes = ReadMatrixSizes();
@@ -143,14 +144,16 @@ namespace Homework_Theme_04.Helpers
             int columnsCount = matrixSizes[1];
 
             // Генерация случайной матрицы
-            var matrix1 = GenerateMatrix(rowsCount, columnsCount);
-            var matrix2 = GenerateMatrix(rowsCount, columnsCount);
+            var matrix1 = GenerateMatrix(rowsCount, 
+                columnsCount, "Первая матрица", random);
+            var matrix2 = GenerateMatrix(rowsCount, 
+                columnsCount, "Вторая матрица", random);
 
             AddMatrixes(matrix1, matrix2, columnsCount, rowsCount);
             SubtractMatrixes(matrix1, matrix2, columnsCount, rowsCount);
         }
 
-        public static void ShowMatrixesMultiplication()
+        public static void ShowMatrixesMultiplication(Random random)
         {
             int rowCount1 =  GetInputNumber("количество строк первой матрицы");
             int columnsCount2 = GetInputNumber("количество столбцов второй матрицы");
@@ -164,8 +167,10 @@ namespace Homework_Theme_04.Helpers
                 return;
             }
 
-            var matrix1 = GenerateMatrix(commonValue, rowCount1);
-            var matrix2 = GenerateMatrix(columnsCount2, commonValue);
+            var matrix1 = GenerateMatrix(commonValue, 
+                rowCount1, "Первая матрица", random);
+            var matrix2 = GenerateMatrix(columnsCount2,
+                commonValue, "Вторая матрица", random);
 
             var matrix = new int[rowCount1, columnsCount2];
             
@@ -175,7 +180,7 @@ namespace Homework_Theme_04.Helpers
                 for (int j = 0; j < columnsCount2; ++j)
                 {
                     for (int k = 0; k < commonValue; ++k)
-                        matrix[i, j] += matrix1[i, k] * matrix2[k, j];
+                        matrix[i, j] += matrix1[k, i] * matrix2[j, k];
                 }
             }
 
