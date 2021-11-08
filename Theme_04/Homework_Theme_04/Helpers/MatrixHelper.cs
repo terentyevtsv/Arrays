@@ -63,6 +63,10 @@ namespace Homework_Theme_04.Helpers
             return matrix;
         }
 
+        /// <summary>
+        /// Умножение матрицы на число
+        /// </summary>
+        /// <param name="random"></param>
         public static void MultiplyMatrixNumber(Random random)
         {
             // Размеры матрицы
@@ -100,6 +104,13 @@ namespace Homework_Theme_04.Helpers
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Суммирование матриц
+        /// </summary>
+        /// <param name="matrix1">первая матрица</param>
+        /// <param name="matrix2">вторая матрица</param>
+        /// <param name="columnsCount">количество столбцов</param>
+        /// <param name="rowsCount">количество строк</param>
         private static void AddMatrixes(int[,] matrix1, int[,] matrix2, int columnsCount, int rowsCount)
         {
             Console.WriteLine("Сложение матриц:");
@@ -115,6 +126,13 @@ namespace Homework_Theme_04.Helpers
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// разность матриц
+        /// </summary>
+        /// <param name="matrix1"></param>
+        /// <param name="matrix2"></param>
+        /// <param name="columnsCount"></param>
+        /// <param name="rowsCount"></param>
         private static void SubtractMatrixes(int[,] matrix1, int[,] matrix2, int columnsCount, int rowsCount)
         {
             Console.WriteLine("Вычитание матриц:");
@@ -130,6 +148,10 @@ namespace Homework_Theme_04.Helpers
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// сложение и вычитание матриц
+        /// </summary>
+        /// <param name="random"></param>
         public static void ShowSimpleMatrixOperations(Random random)
         {
             // Размеры матриц
@@ -153,11 +175,15 @@ namespace Homework_Theme_04.Helpers
             SubtractMatrixes(matrix1, matrix2, columnsCount, rowsCount);
         }
 
+        /// <summary>
+        /// Умножение матриц
+        /// </summary>
+        /// <param name="random"></param>
         public static void ShowMatrixesMultiplication(Random random)
         {
             int rowCount1 =  GetInputNumber("количество строк первой матрицы");
             int columnsCount2 = GetInputNumber("количество столбцов второй матрицы");
-            int commonValue = GetInputNumber("общая размерность");
+            int commonValue = GetInputNumber("Количество столбцов в первой матрице = количество строк во второй матрице");
 
             if (rowCount1 <= 0 ||
                 columnsCount2 <= 0 ||
@@ -167,10 +193,10 @@ namespace Homework_Theme_04.Helpers
                 return;
             }
 
-            var matrix1 = GenerateMatrix(commonValue, 
-                rowCount1, "Первая матрица", random);
-            var matrix2 = GenerateMatrix(columnsCount2,
-                commonValue, "Вторая матрица", random);
+            var matrix1 = GenerateMatrix(rowCount1, 
+                commonValue, "Первая матрица", random);
+            var matrix2 = GenerateMatrix(commonValue,
+                columnsCount2, "Вторая матрица", random);
 
             var matrix = new int[rowCount1, columnsCount2];
             
@@ -180,7 +206,7 @@ namespace Homework_Theme_04.Helpers
                 for (int j = 0; j < columnsCount2; ++j)
                 {
                     for (int k = 0; k < commonValue; ++k)
-                        matrix[i, j] += matrix1[k, i] * matrix2[j, k];
+                        matrix[i, j] += matrix1[i, k] * matrix2[k, j];
                 }
             }
 
@@ -194,6 +220,8 @@ namespace Homework_Theme_04.Helpers
                 }
                 Console.WriteLine(string.Join("\t", buf));
             }
+
+            Console.ReadKey();
         }
     }
 }

@@ -37,7 +37,7 @@ namespace Homework_Theme_04
             // 
             // Худшая прибыль в месяцах: 7, 4, 1, 5, 12
             // Месяцев с положительной прибылью: 10
-            //TaskHelper1.MakeTask1();
+            TaskHelper1.MakeTask1();
 
 
 
@@ -66,7 +66,9 @@ namespace Homework_Theme_04
             // 1       7      21      35      35       21      7       1
             // 
             // Справка: https://ru.wikipedia.org/wiki/Треугольник_Паскаля
-            //PascalTriangleHelper.MakePascalTriangle();
+            PascalTriangleHelper.MakePascalTriangle();
+
+            Console.WriteLine("Операции с матрицами");
 
             // 
             // * Задание 3.1
@@ -84,7 +86,7 @@ namespace Homework_Theme_04
             //  5 х |  4  5  7  | = | 20  25  35  |
             //      |  5  3  1  |   | 25  15   5  |
             var random = new Random();
-            //MatrixHelper.MultiplyMatrixNumber(random);
+            MatrixHelper.MultiplyMatrixNumber(random);
             //
             //
             // ** Задание 3.2
@@ -104,7 +106,7 @@ namespace Homework_Theme_04
             //  |  1  3  5  |   |  1  3  4  |   |  0   0   1  |
             //  |  4  5  7  | - |  2  5  6  | = |  2   0   1  |
             //  |  5  3  1  |   |  3  6  7  |   |  2  -3  -6  |
-            //MatrixHelper.ShowSimpleMatrixOperations(random);
+            MatrixHelper.ShowSimpleMatrixOperations(random);
             //
             // *** Задание 3.3
             // Заказчику требуется приложение позволяющщее перемножать математические матрицы
