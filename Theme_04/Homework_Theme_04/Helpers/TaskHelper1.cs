@@ -65,7 +65,6 @@ namespace Homework_Theme_04.Helpers
         {
             // Сортировка прибыли
             var lowProfits = profits
-                .Where(p => p > 0)
                 .Distinct()
                 .OrderBy(p => p)
                 .Take(3)
